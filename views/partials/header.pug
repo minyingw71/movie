@@ -1,0 +1,11 @@
+div#header
+	a(href="/") Home
+	| 
+	a(href="/movies") Movies
+	| 
+	if session.loggedin
+		a(href="/profile/"+session.username) Profile
+		| 
+		a(href="/logout") Log out
+	else
+		a(href="/login") Log in

@@ -1,0 +1,64 @@
+doctype html
+html
+    head
+        link(href="/css/topnav.css" rel="stylesheet")
+        link(href="/css/addMovie.css" rel="stylesheet")
+        link(href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet")
+    body
+        .topnav
+            a.openNav(style='cursor:pointer; margin-left: 350px;')
+                span.material-icons(onclick='openNav()') keyboard_arrow_down
+            |         
+            a.active(href='/')
+                span.material-icons home
+            a(href='/logout', style='float:right; margin-right: 350px;')
+                span.material-icons login
+            |
+            a(href=href=`/profile/${session.username}`, style='float:right;')
+                span.material-icons account_circle
+            |         
+            a(href='/movies', style='float:right;')
+                span.material-icons playlist_play
+            |         
+            a(href='/searchPage', style='float:right;')
+                span.material-icons search
+        #page.container
+            #header
+                img(src=movie.Poster)
+                #logo                    
+                    h3 ID:
+                    a #{movie._id}
+                    h3 Year:
+                    a #{movie.Year}
+                    h3 Rated:
+                    a #{movie.Rated}
+                    h3 Released:
+                    a #{movie.Released}
+                    h3 Runtime:
+                    a #{movie.Runtime}
+                if session.loggedin
+                    form.inputBox(method='post', action='/addWatchList')                                
+                        input(type='submit', value='Add watchList')
+                    br
+                    #logo    
+                        a(href='/movies/' + movie._id)  Return
+            #main
+                #welcome
+                    .title
+                        h2 Hi~ o(*￣▽￣*)ブ
+                    h3 Add a movie review here:
+                #featured
+                    form.signIn(method='post', action='/addReview') 
+                        .inputBox
+                            input(type='number', name='score', placeholder='score (0-10)', required='')
+                        |
+                        .inputBox
+                            textarea(rows='5', name='summary', placeholder='summary')
+                        |
+                        .inputBox
+                            textarea(rows='5', name='briefReview', placeholder='review')
+                        |
+                        .inputBox
+                            input(type='submit', value='addReview')                         
+        script(src="/js/client.js")
+        include ../views/partials/footer

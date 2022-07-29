@@ -1,0 +1,77 @@
+doctype html
+html
+    head
+        link(href="/css/topnav.css" rel="stylesheet")
+        link(href="/css/profile.css" rel="stylesheet")
+        link(href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet")
+    body
+        .topnav
+            a.active(href="/" style="cursor:pointer; margin-left: 350px;")
+                span.material-icons home
+            a(href="/logout" style="float:right; margin-right: 350px;")
+                span.material-icons logout
+            a(href=`/profile/${session.username}` style="float:right;")
+                span.material-icons account_circle
+            a(href="/movies" style="float:right;")
+                span.material-icons playlist_play
+            .search-container
+                form(action="/searchUser", method="get") 
+                    input(
+                        name="searchUser"
+                        type="text"
+                        required
+                    )
+                    button(type="submit")
+                        i.fa.fa-search
+        #page.container
+            #header
+                #logo        
+                    img(alt="" src="/content/user.jfif")
+                    h3#userName Username: #{user.name}
+                    form.inputBox(method='post', action='/follow')                                                    
+                        input(type='submit', value='Follow')
+                    form.inputBox(method='post', action='/unfollow')                                                        
+                        input(type='submit', value='Unfollow') 
+            #main
+                #welcome
+                    .title
+                        h2 Hi~ o(*￣▽￣*)ブ
+                    .title
+                    #featured
+                        h2 WatchList
+                        span.byline Here is #{user.name}'s watchList（￣︶￣）↗
+                    ul.style1
+                        li
+                            each s in user.watchList
+                                a(href='/movies2/' + s)  #{s}
+                #featured
+                    .title
+                        h2 Reviews
+                        span.byline Here is your Reviews（￣︶￣）↗
+                    ul.style1
+                        li
+                            each r in user.review
+                                tr
+                                    a(href='/movies/' + r.movieID)  #{r.movieTitle}
+                                    p Score: #{r.score}
+                                    p Summary: #{r.summary}
+                                    p Brief Review: #{r.briefReview}
+                                    br
+                #featured
+                    .title
+                        h2 Followers
+                        span.byline Here is #{user.name}'s following list（￣︶￣）↗
+                    ul.style1
+                        li
+                            each f in user.followers
+                                a(href='/other/' + f)  #{f}
+                #featured
+                    .title
+                        h2 Following
+                        span.byline Here is #{user.name}'s follower list（￣︶￣）↗
+                    ul.style1
+                        li
+                            each s in user.subscriptions
+                                a(href='/other/' + s)  #{s}                       
+        script(src="/js/client.js")
+        include ../views/partials/footer

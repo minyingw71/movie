@@ -1,0 +1,110 @@
+doctype html
+html
+    head
+        link(href="/css/topnav.css" rel="stylesheet")
+        link(href="/css/profile.css" rel="stylesheet")
+        link(href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet")
+    body
+        .topnav
+            a.active(href="/" style="cursor:pointer; margin-left: 350px;")
+                span.material-icons home
+            a(href="/logout" style="float:right; margin-right: 350px;")
+                span.material-icons logout
+            a(href=`/profile/${session.username}` style="float:right;")
+                span.material-icons account_circle
+            a(href="/movies" style="float:right;")
+                span.material-icons playlist_play
+            .search-container
+                form(action="/searchUser", method="get") 
+                    input(
+                        name="searchUser"
+                        type="text"
+                        required
+                    )
+                    button(type="submit")
+                        i.fa.fa-search
+        #page.container
+            #header
+                #logo
+                    img(alt="" src="/content/user.jfif")
+                    h3#userName Username: #{user.name}
+                    a
+                        if user.accountType != 0
+                            p Account type: contribute 
+                        else
+                            p Account type: normal
+                        ul.actions
+                            li
+                                if user.accountType != 1
+                                    a Click here to upgrade your account
+                                    form.signIn(method='post', action='/upgrade')                                
+                                        .inputBox
+                                            input(type='submit', value='upgrade')
+                                else
+                                    a Click here to switch to normal account
+                                    form.signIn(method='post', action='/downgrade')                                
+                                        .inputBox
+                                            input(type='submit', value='downgrade')
+                #menu
+                    ul
+                        li.current_page_item
+                            a(
+                                accesskey="1"
+                                href="/"
+                                title=""
+                            ) Home page
+                        li
+                            a(
+                                accesskey="2"
+                                href="/searchPage"
+                                title=""
+                            ) Search Page
+                        if user.accountType !=0
+                            li
+                                a(
+                                    accesskey="3"
+                                    href=`/profile/${session.username}/addMovie`
+                                    title=""
+                                ) add a movie
+            #main
+                #welcome
+                    .title
+                        h2 Hi~ o(*￣▽￣*)ブ
+                #featured
+                    .title
+                        h2 WatchList
+                        span.byline Here is your watchList（￣︶￣）↗
+                    ul.style1
+                        li
+                            each s in user.watchList
+                                a(href='/movies2/' + s)  #{s}
+                #featured
+                    .title
+                        h2 Reviews
+                        span.byline Here is your Reviews（￣︶￣）↗
+                    ul.style1
+                        li
+                            each r in user.review
+                                tr
+                                    a(href='/movies/' + r.movieID)  #{r.movieTitle}
+                                    p Score: #{r.score}
+                                    p Summary: #{r.summary}
+                                    p Brief Review: #{r.briefReview}
+                                    br
+                #featured
+                    .title
+                        h2 Following
+                        span.byline Here is your following list（￣︶￣）↗
+                    ul.style1
+                        li
+                            each u in user.subscriptions
+                                a(href='/other/' + u)  #{u}
+                #featured
+                    .title
+                        h2 Followers
+                        span.byline Here is your follower list（￣︶￣）↗
+                    ul.style1
+                        li
+                            each u in user.followers
+                                a(href='/other/' + u)  #{u}
+        script(src="/js/client.js")

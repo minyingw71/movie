@@ -1,0 +1,46 @@
+doctype html
+html
+  head
+    meta(name="viewport' content=", width='device-width,', initial-scale='1.0"')
+    |         
+    meta(charset='utf-8')
+    |         
+    title Movies
+    |         
+    link(href='/css/movies.css' rel='stylesheet')
+    link(href="/css/topnav.css" rel="stylesheet")
+    link(href="/css/header.css" rel="stylesheet")
+
+  |     
+  body
+    header#header
+        .profile
+            .nav-menu 
+                a.active(href='/')
+                    span.material-icons home
+                a(href='/searchPage')
+                    span.material-icons search
+                |    
+                a(href='/movies')
+                    span.material-icons playlist_play
+                |  
+                a(href=`/profile/${session.username}`)
+                    span.material-icons account_circle
+                |    
+                a(href='/logout')
+                    span.material-icons login
+                |            
+    |
+    .container
+        each movie in movies 
+            .box
+                .imgBx
+                    img(src=movie.Poster)
+                |                 
+                .content
+                    h2 #{movie.Title}
+                    |                     
+                    a(href='/movies/' + movie._id) Read More
+
+
+

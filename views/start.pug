@@ -1,0 +1,289 @@
+doctype html
+html
+  head
+    link(rel='stylesheet', href='/css/start.css')
+    |         
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css')
+    |         
+    link(rel='shortcut icon', href='#')
+    |         
+    script(src='/js/start.js')
+  |     
+  body
+    #mySidenav.sidenav
+      a.startTitle(href='javascript:void(0)', onclick='closeNav()') Movie 
+      |         
+      a.closebtn(href='javascript:void(0)', onclick='closeNav()') &times;
+    |       
+    .topnav
+      a.openNav(style='cursor:pointer; margin-left: 350px;')
+        span.material-icons(onclick='openNav()') keyboard_arrow_down
+      |         
+      a.active(href='/')
+        span.material-icons home
+      a(href='/logout', style='float:right; margin-right: 350px;')
+        span.material-icons login
+      |
+      a(href=href=`/profile/${session.username}`, style='float:right;')
+          span.material-icons account_circle
+      |         
+      a(href='/movies', style='float:right;')
+        span.material-icons playlist_play
+      |         
+      a(href='/searchPage', style='float:right;')
+        span.material-icons search
+    |       
+    #wrapper
+      #logo.container
+        h1 Movie
+        |           
+        p Enjoy the movie world &#x30FE;(&bull;&omega;&bull;&grave;)o
+      |         
+      #page.container
+        div
+          .entry
+            p
+              | Which type of movies do you like? 
+              strong Comedy? 
+              |                 
+              strong Drama? 
+              |                 
+              strong Horror? 
+              |                 
+              strong Mystery? 
+              |               ... Select which you like and have fun (&gE;&Del;&lE;)&#xFF89;
+      |         
+      |         
+      #three-column.container
+        .tbox1
+          .box-style
+            .image
+              img(src='../content/genre-logo/Comedy.png', width='250', height='250', alt='')
+            |               
+            h2 Comedy
+            |               
+            a.button(href='/movies?genre=Comedy') Learn More
+        |           
+        .tbox2
+          .box-style
+            .image
+              img(src='../content/genre-logo/Drama.png', width='250', height='250', alt='')
+            |               
+            h2 Drama
+            |               
+            a.button(href='/movies?genre=Drama') Learn More
+        |           
+        .tbox3
+          .box-style
+            .image
+              img(src='../content/genre-logo/Horror.png', width='250', height='250', alt='')
+            |               
+            h2 Horror
+            |               
+            a.button(href='/movies?genre=Horror') Learn More
+      |         
+      #three-column.container
+        .tbox1
+          .box-style
+            .image
+              img(src='../content/genre-logo/Mystery.png', width='250', height='250', alt='')
+            |               
+            h2 Mystery
+            |               
+            a.button(href='/movies?genre=Mystery') Learn More
+        |           
+        .tbox2
+          .box-style
+            .image
+              img(src='../content/genre-logo/Crime.png', width='250', height='250', alt='')
+            |               
+            h2 Crime
+            |               
+            a.button(href='/movies?genre=Crime') Learn More
+        |           
+        .tbox3
+          .box-style
+            .image
+              img(src='../content/genre-logo/Thriller.png', width='250', height='250', alt='')
+            |               
+            h2 Thriller
+            |               
+            a.button(href='/movies?genre=Thriller') Learn More
+      |         
+      #three-column.container
+        .tbox1
+          .box-style
+            .image
+              img(src='../content/genre-logo/Romance.png', width='250', height='250', alt='')
+            |               
+            h2 Romance
+            |               
+            a.button(href='/movies?genre=Romance') Learn More
+        |           
+        .tbox2
+          .box-style
+            .image
+              img(src='../content/genre-logo/War.png', width='250', height='250', alt='')
+            |               
+            h2 War
+            |               
+            a.button(href='/movies?genre=War') Learn More
+        |           
+        .tbox3
+          .box-style
+            .image
+              img(src='../content/genre-logo/Western.png', width='250', height='250', alt='')
+            |               
+            h2 Western
+            |               
+            a.button(href='/movies?genre=Western') Learn More
+      |         
+      #three-column.container
+        .tbox1
+          .box-style
+            .image
+              img(src='../content/genre-logo/Documentary.png', width='250', height='250', alt='')
+            |               
+            h2 Documentary
+            |               
+            a.button(href='/movies?genre=Documentary') Learn More
+        |           
+        .tbox2
+          .box-style
+            .image
+              img(src='../content/genre-logo/Music.png', width='250', height='250', alt='')
+            |               
+            h2 Music
+            |               
+            a.button(href='/movies?genre=Music') Learn More
+        |           
+        .tbox3
+          .box-style
+            .image
+              img(src='../content/genre-logo/Animation.png', width='250', height='250', alt='')
+            |               
+            h2 Animation
+            |               
+            a.button(href='/movies?genre=Animation') Learn More
+      |         
+      #three-column.container
+        .tbox1
+          .box-style
+            .image
+              img(src='../content/genre-logo/Adventure.png', width='250', height='250', alt='')
+            |               
+            h2 Adventure
+            |               
+            a.button(href='/movies?genre=Adventure') Learn More
+        |           
+        .tbox2
+          .box-style
+            .image
+              img(src='../content/genre-logo/Family.png', width='250', height='250', alt='')
+            |               
+            h2 Family
+            |               
+            a.button(href='/movies?genre=Family') Learn More
+        |           
+        .tbox3
+          .box-style
+            .image
+              img(src='../content/genre-logo/Sci-Fi.png', width='250', height='250', alt='')
+            |               
+            h2 Sci-Fi
+            |               
+            a.button(href='/movies?genre=SciFi') Learn More
+      |         
+      #three-column.container
+        .tbox1
+          .box-style
+            .image
+              img(src='../content/genre-logo/Action.png', width='250', height='250', alt='')
+            |               
+            h2 Action
+            |               
+            a.button(href='/movies?genre=Action') Learn More
+        |           
+        .tbox2
+          .box-style
+            .image
+              img(src='../content/genre-logo/Fantasy.png', width='250', height='250', alt='')
+            |               
+            h2 Fantasy
+            |               
+            a.button(href='/movies?genre=Fantasy') Learn More
+        |           
+        .tbox3
+          .box-style
+            .image
+              img(src='../content/genre-logo/Sport.png', width='250', height='250', alt='')
+            |               
+            h2 Sport
+            |               
+            a.button(href='/movies?genre=Sport') Learn More
+      |         
+      #three-column.container
+        .tbox1
+          .box-style
+            .image
+              img(src='../content/genre-logo/Short.png', width='250', height='250', alt='')
+            |               
+            h2 Short
+            |               
+            a.button(href='/movies?genre=Short') Learn More
+        |           
+        .tbox2
+          .box-style
+            .image
+              img(src='../content/genre-logo/Biography.png', width='250', height='250', alt='')
+            |               
+            h2 Biography
+            |               
+            a.button(href='/movies?genre=Biography') Learn More
+        |           
+        .tbox3
+          .box-style
+            .image
+              img(src='../content/genre-logo/History.png', width='250', height='250', alt='')
+            |               
+            h2 History
+            |               
+            a.button(href='/movies?genre=History') Learn More
+      |         
+      #three-column.container
+        .tbox1
+          .box-style
+            .image
+              img(src='../content/genre-logo/NA.png', width='250', height='250', alt='')
+            |               
+            h2 N/A
+            |               
+            a.button(href='/movies?genre=N/A') Learn More
+        |           
+        .tbox2
+          .box-style
+            .image
+              img(src='../content/genre-logo/Musical.png', width='250', height='250', alt='')
+            |               
+            h2 Musical
+            |               
+            a.button(href='/movies?genre=Musical') Learn More
+        |           
+        .tbox3
+          .box-style
+            .image
+              img(src='../content/genre-logo/Film-Noir.png', width='250', height='250', alt='')
+            |               
+            h2 Film-Noir
+            |               
+            a.button(href='/movies?genre=FilmNoir') Learn More
+      |         
+      #three-column.container
+        .tbox1
+          .box-style
+            .image
+              img(src='../content/genre-logo/News.png', width='250', height='250', alt='')
+            |               
+            h2 News
+            |               
+            a.button(href='/movies?genre=News') Learn More

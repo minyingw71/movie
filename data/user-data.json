@@ -1,0 +1,54 @@
+[
+    {
+        "name":"a",
+        "password":"a",
+        "accountType": 0,
+        "subscriptions":[],
+        "followers":[],
+        "watchList":[],
+        "notifications":[],
+        "recommandations":[]
+    },
+    {
+        "name":"b",
+        "password":"b",
+        "accountType": 0,
+        "subscriptions":[],
+        "followers":[],
+        "watchList":[],
+        "notifications":[],
+        "recommandations":[]
+    },
+    {
+        "name":"0",
+        "password":"0",
+        "accountType":0,
+        "subscriptions":[],
+        "followers":[],
+        "watchList":[],
+        "notifications":[],
+        "recommandations":[]
+    },
+    {
+        "name":"3",
+        "password":"3",
+        "accountType":1,
+        "subscriptions":[],
+        "followers":[],
+        "watchList":[],
+        "notifications":[],
+        "recommandations":[]
+    },
+    {
+        "name":"4",
+        "password":"4",
+        "accountType":1,
+        "subscriptions":[],
+        "followers":[],
+        "watchList":[],
+        "notifications":[],
+        "recommandations":[]
+    }
+
+
+]

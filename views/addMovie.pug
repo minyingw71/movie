@@ -1,0 +1,98 @@
+doctype html
+html
+    head
+        link(href="/css/topnav.css" rel="stylesheet")
+        link(href="/css/addMovie.css" rel="stylesheet")
+        link(href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet")
+    body
+        .topnav
+            a.active(href="/" style="cursor:pointer; margin-left: 350px;")
+                span.material-icons home
+            a(href="/logout" style="float:right; margin-right: 350px;")
+                span.material-icons logout
+            a(href=`/profile/${session.username}` style="float:right;")
+                span.material-icons account_circle
+            a(href="/movies" style="float:right;")
+                span.material-icons playlist_play
+            .search-container
+                form(action="/searchUser", method="get") 
+                    input(
+                        name="searchUser"
+                        type="text"
+                        required
+                    )
+                    button(type="submit")
+                        i.fa.fa-search
+        #page.container
+            #header
+                #logo
+                    img(alt="" src="/content/user.jfif")
+                    h3#userName Username: #{user.name}
+                #menu
+                    ul
+                        li.current_page_item
+                            a(
+                                accesskey="1"
+                                href="/"
+                                title=""
+                            ) Home page
+                        li
+                            a(
+                                accesskey="2"
+                                href="/searchPage"
+                                title=""
+                            ) Search Page
+                        if user.accountType !=0
+                            li
+                                a(
+                                    accesskey="3"
+                                    href=`/profile/${session.username}`
+                                    title=""
+                                ) Return
+            #main
+                #welcome
+                    .title
+                        h2 Hi~ o(*￣▽￣*)ブ
+                    h3 Add a new movie here:
+                #featured
+                    form.signIn(method='post', action='/addMovie') 
+                        .inputBox
+                            input(type='text', name='Title', placeholder='Title', required='')
+                        |
+                        .inputBox
+                            input(type='number', name='Year', placeholder='Year')
+                        |
+                        .inputBox
+                            input(type='text', name='Rated', placeholder='Rated')
+                        |
+                        .inputBox
+                            input(type='text', name='Released', placeholder='Released')
+                        |
+                        .inputBox
+                            input(type='text', name='Runtime', placeholder='Runtime')
+                        |
+                        .inputBox
+                            input(type='text', name='Genre', placeholder='Genre')
+                        |
+                        .inputBox
+                            input(type='text', name='Director', placeholder='Director')
+                        |
+                        .inputBox
+                            input(type='text', name='Writer', placeholder='Writer')
+                        |
+                        .inputBox
+                            input(type='text', name='Actors', placeholder='Actors')
+                        |
+                        .inputBox
+                            textarea(rows='5', name='Plot', placeholder='Plot')
+                        | 
+                        .inputBox
+                            input(type='text', name='Awards', placeholder='Awards')
+                        |
+                        .inputBox
+                            input(type='text', name='Poster', placeholder='Poster')
+                        |   
+                        .inputBox
+                            input(type='submit', value='addMovie')
+
+        script(src="/js/client.js")
